@@ -11,12 +11,16 @@ const multiply = function (a,b){
 }
 
 const divide = function (a,b) {
+    if (b===0){
+        return "ERROR"
+    }
     return a/b    
 }
 
 let operator=''
 let firstNumber=''
 let secondNumber=''
+let isResultDisplay=false
 
 function operate (op, a, b){
     a=Number(a)
@@ -41,7 +45,12 @@ digits.forEach(button=>{
         button.addEventListener('click', ()=>{
             const value=button.textContent
 
-            if (operator===''){
+            if(isResultDisplay){
+                firstNumber=value
+                display.textContent=value
+                isResultDisplay=false
+                return
+            }else if (operator===''){
                 firstNumber += value
             }else{
                 secondNumber += value
@@ -53,23 +62,31 @@ digits.forEach(button=>{
 const operators=document.querySelectorAll('.operator')
 operators.forEach(button=>{
         button.addEventListener('click',()=>{
-        if(firstNumber !== ''){
+        if(firstNumber!=='' && operator!=='' && secondNumber!==''){
+            const preResult=operate(operator, firstNumber, secondNumber)
+
+            firstNumber=preResult.toString()
+            display.textContent=firstNumber
+            secondNumber=''
+        }
             operator=button.textContent
             display.textContent=`${firstNumber} ${operator}`
-        }
      })
 })
 
 const equal=document.querySelector('#equal')
 equal.addEventListener('click', ()=>{
     if (firstNumber!=='' && operator!=='' && secondNumber!==''){
-        const result=operate (operator, firstNumber, secondNumber)
+        let result=operate (operator, firstNumber, secondNumber)
+        if (result!=="ERROR"){
+         result=Number(result.toFixed(2))
+        }
         display.textContent=result
-
         firstNumber=result.toString()
         operator=''
         secondNumber=''
     }
+    isResultDisplay=true
 })
 
 const clear=document.querySelector('#clear')

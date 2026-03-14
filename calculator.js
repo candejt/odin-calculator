@@ -37,27 +37,47 @@ function operate (op, a, b){
 
 const digits=document.querySelectorAll('.digit')
 const display=document.querySelector('.display')
-
 digits.forEach(button=>{
         button.addEventListener('click', ()=>{
             const value=button.textContent
 
-            if (operator=''){
+            if (operator===''){
                 firstNumber += value
-                display.textContent=firstNumber
             }else{
                 secondNumber += value
-                display.textContent=secondNumber
             }
+             display.textContent=`${firstNumber} ${operator} ${secondNumber}`
         })
 })
 
 const operators=document.querySelectorAll('.operator')
-
 operators.forEach(button=>{
         button.addEventListener('click',()=>{
+        if(firstNumber !== ''){
             operator=button.textContent
-        })
+            display.textContent=`${firstNumber} ${operator}`
+        }
+     })
+})
+
+const equal=document.querySelector('#equal')
+equal.addEventListener('click', ()=>{
+    if (firstNumber!=='' && operator!=='' && secondNumber!==''){
+        const result=operate (operator, firstNumber, secondNumber)
+        display.textContent=result
+
+        firstNumber=result.toString()
+        operator=''
+        secondNumber=''
+    }
+})
+
+const clear=document.querySelector('#clear')
+clear.addEventListener('click', ()=>{
+    firstNumber=''
+    operator=''
+    secondNumber=''
+    display.textContent='0'
 })
 
 

@@ -1,0 +1,68 @@
+*{
+    box-sizing: border-box;
+}
+.container{
+    background-color: grey;
+    width: 300px;
+    height: 460px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#buttons{
+    background-color: blueviolet;
+    display: flex;
+}
+.display{
+    background-color: white;
+    color: black;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box; 
+    font-size: 25px;
+}
+.numbers{
+    background-color: lightgrey;
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 5px;
+    width:75%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.operators{
+    background-color: lightgray;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 5px;
+    width: 25%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.digit, .decimal, #equal{
+    width: 100%;
+    height: 70px;
+    font-size: 25px;
+}
+#clear{
+    grid-column: span 3;
+    width: 100%;
+    height: 70px;
+    font-size: 25px;
+}
+.operator, #delete {
+    width: 100%;
+    height: 70px;
+    font-size: 25px;
+}
+.digit:hover, .decimal:hover, #equal:hover, #clear:hover, .operator:hover, #delete:hover{
+    background-color:salmon;
+    cursor: pointer;
+}
+    
+

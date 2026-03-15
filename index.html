@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
+    <link rel="stylesheet" href="styles.css">
     
 </head>
 <body>
     <div class="container">
-        <div class="display">DISPLAY</div>
-        <div class="buttons">
-            <button type="button" class="digit">0</button>
+        <div class="display">0</div>
+        <div id="buttons">
+            <div class="numbers">
             <button type="button" class="digit">1</button>
             <button type="button" class="digit">2</button>
             <button type="button" class="digit">3</button>
@@ -20,15 +21,19 @@
             <button type="button" class="digit">7</button>
             <button type="button" class="digit">8</button>
             <button type="button" class="digit">9</button>
-
+            <button type="button" class="digit">0</button>
+            <button type="button" class="decimal">.</button>
+            <button type="button" id="equal">=</button>
+            <button type="button" id="clear">Clear</button>
+            </div>
+            
+            <div class="operators">
             <button type="button" class="operator">+</button>
             <button type="button" class="operator">-</button>
             <button type="button" class="operator">*</button>
             <button type="button" class="operator">/</button>
-            
-            <button type="button" id="equal">=</button>
-            <button type="button" id="clear">Clear</button>
-        </div>
+            <button type="button" id="delete">C</button>
+            </div>
         
     </div>
 <script src="calculator.js" defer></script>

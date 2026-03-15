@@ -97,4 +97,44 @@ clear.addEventListener('click', ()=>{
     display.textContent='0'
 })
 
+const decimal=document.querySelector('.decimal')
+decimal.addEventListener('click', ()=>{
+    if(operator===''){
+        if(!firstNumber.includes('.')){
+            firstNumber += '.'
+            display.textContent=firstNumber
+            }
+    }else{
+        if(!secondNumber.includes('.')){
+            secondNumber += '.'
+            display.textContent=firstNumber+operator+secondNumber
+         }
+    }
+})
+    
+const backspace=document.querySelector('#delete')
+backspace.addEventListener('click',()=>{
+    if (operator===''){
+        firstNumber=firstNumber.slice(0,-1)
+        display.textContent=firstNumber || '0'
+    }else if (secondNumber !== ''){
+        secondNumber=secondNumber.slice(0,-1)
+        display.textContent=firstNumber + operator + secondNumber
+    }else{
+        operator=''
+        display.textContent=firstNumber
+    }
+})
 
+window.addEventListener('keydown', (e)=>{
+    let key=e.key
+    if (key==='Enter') key = '='
+    if (key ==='Escape') key = 'Clear'
+    if (key === 'Backspace') key= 'C'
+
+    const button= Array.from(document.querySelectorAll('button'))
+                    .find(btn => btn.textContent===key)
+    if (button){
+        button.click()
+    }
+})
